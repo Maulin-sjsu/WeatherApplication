@@ -1,12 +1,9 @@
-console.log('Statement 1')
+const request = require('request')
 
-setTimeout(() => {
-    console.log('Statement 4')
-}, 2000);
+const url = 'http://api.weatherstack.com/current?access_key=71525ba418498cd51012866ccdbffa0b&query=San%20Jose&units=s'
 
-setTimeout(() => {
-    console.log('Statement 3')
-}, 0);
-
-
-console.log('Statement 2')
+request({url: url, json: true}, (error, response) => {
+    //const data = JSON.parse(response.body)
+    
+    console.log(response.body.current.weather_descriptions[0]+". It's currently "+ response.body.current.temperature+' degrees out. But it feels like '+ response.body.current.feelslike + ' degrees out there')
+})
