@@ -2,15 +2,16 @@ const request = require('request')
 const geocode = require('./utils/geoCode')
 const forcast = require('./utils/forcast')
 
-geocode('San Jose', (error, data)=>{
+geocode('San Fransisco', (error, data)=>{
     console.log('Error', error)
     console.log('data', data)
+    forcast(data.longitude, data.latitude, (error, data) => {
+        console.log('Error', error)
+        console.log('data', data)
+    })
 })
 
-forcast(-84.08333, 9.93333, (error, data) => {
-    console.log('Error', error)
-    console.log('data', data)
-})
+
 
 // const url = 'http://api.weatherstack.com/current?access_key=71525ba418498cd51012866ccdbffa0b&query=San%20Jose&units=m'
 

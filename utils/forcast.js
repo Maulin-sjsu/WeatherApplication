@@ -1,9 +1,9 @@
 const request = require('request')
 
-const forcast = (lat,lon,callback) =>{
+const forcast = (latitude,longitude,callback) =>{
 
-const url = 'http://api.weatherstack.com/current?access_key=71525ba418498cd51012866ccdbffa0b&query='+lon+','+lat
-console.log(url)
+const url = 'http://api.weatherstack.com/current?access_key=71525ba418498cd51012866ccdbffa0b&query='+longitude+','+latitude
+//console.log(url)
 
 request({url: url, json: true}, (error, response) => {
     //const data = JSON.parse(response.body)
