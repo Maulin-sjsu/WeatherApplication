@@ -2,12 +2,23 @@ const request = require('request')
 const geocode = require('./utils/geoCode')
 const forcast = require('./utils/forcast')
 
-geocode('San Fransisco', (error, data)=>{
-    console.log('Error', error)
-    console.log('data', data)
-    forcast(data.longitude, data.latitude, (error, data) => {
-        console.log('Error', error)
-        console.log('data', data)
+
+var myArgs = process.argv.slice(2);
+// console.log(myArgs)
+
+geocode(myArgs, (error, {longitude, latitude, location})=>{
+    if (error)
+    {
+        return console.log('Error', error)
+    }
+    //console.log('data', data)
+    forcast(longitude, latitude, (error, forcastdata) => {
+       if(error)
+       {
+           return console.log('Error', error)
+       }
+        console.log('Location : ', location)
+        console.log('data : ', forcastdata)
     })
 })
 
