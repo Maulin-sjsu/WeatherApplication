@@ -1,7 +1,13 @@
 const request = require('request')
 const geocode = require('./utils/geoCode')
+const forcast = require('./utils/forcast')
 
 geocode('San Jose', (error, data)=>{
+    console.log('Error', error)
+    console.log('data', data)
+})
+
+forcast(-84.08333, 9.93333, (error, data) => {
     console.log('Error', error)
     console.log('data', data)
 })
@@ -44,6 +50,8 @@ geocode('San Jose', (error, data)=>{
 //     }
     
 // })
+
+
 
 
 
