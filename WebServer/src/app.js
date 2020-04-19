@@ -26,7 +26,7 @@ const port = 3000;
 
 app.get('',(req, res)=>{
     res.render('index',{
-        title: 'Weathe Application',
+        title: 'Weather Application',
         name: 'Maulin Bodiwala'
     })
 })
@@ -48,10 +48,10 @@ app.get('/about',(req,res)=>{
 app.get('/weather',(req,res)=>{
     if(!req.query.address){
         return res.send({
-            error: "You must provide a search term"
+            error: "You must provide a valid search term"
         })
     }
-    geocode(req.query.address, (error, {longitude, latitude, location})=>{
+    geocode(req.query.address, (error, {longitude, latitude, location}={})=>{
         if (error)
         {
             return res.send({error})
@@ -62,7 +62,7 @@ app.get('/weather',(req,res)=>{
            {
             return res.send({error})
            }res.send({
-                Location :  location,
+                location :  location,
                 forcast :  forcastdata,
                 address: req.query.address
            })
