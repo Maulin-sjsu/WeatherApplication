@@ -10,6 +10,10 @@ const forcast = require('./utils/forcast')
 
 const app = express();
 
+const port = process.env.PORT || 3000;
+
+
+
 // Define Paths For Express Config
 const pubicDirectoryPath = path.join(__dirname,'../public')
 const viewPath = path.join(__dirname,'../templates/views')
@@ -22,7 +26,6 @@ hbs.registerPartials(partialsPath)
 //Set up Static Directory to serve
 app.use(express.static(pubicDirectoryPath))
 
-const port = process.env.PORT || 3000;
 
 app.get('',(req, res)=>{
     res.render('index',{
